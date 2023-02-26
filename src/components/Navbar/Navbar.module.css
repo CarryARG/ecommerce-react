@@ -1,0 +1,23 @@
+.containerBackground {
+  background-color: #8c05fb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 15vh;
+  left: 0;
+  top: 0;
+}
+
+.containerBanner {
+  width: 100%;
+  height: 500px;
+  display: flex;
+}
+
+.containerLogo {
+  width: 80px;
+  transform: translate(20px, -10px);
+}
+
+/* otros colores para la magia: #156A6D , #8CF4F8, #474265*/
