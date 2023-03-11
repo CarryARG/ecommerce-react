@@ -11,7 +11,11 @@ export const Navbar = () => {
           alt="Logo"
           className={styles.containerLogo}
         />
-        <ItemListContainer greetings={"Hola Usuario"} />
+        <ul className={styles.containerFont}>
+          <li>Contacto</li>
+          <li>Mas cosas</li>
+          <li>ETC</li>
+        </ul>
         <CartWidget />
       </div>
       <div>
@@ -21,6 +25,7 @@ export const Navbar = () => {
           alt="bannerPixel2022"
         />
       </div>
+      <ItemListContainer />
     </div>
   );
 };

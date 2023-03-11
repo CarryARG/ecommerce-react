@@ -1,14 +1,29 @@
-import styles from "./ItemListContainer.module.css";
+import { products } from "../../productsMock";
+import { useState, useEffect } from "react";
+import ItemList from "../ItemList/ItemList";
 
-const ItemListContainer = ({ greetings }) => {
+const ItemListContainer = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const productList = new Promise((resolve, reject) => {
+      resolve(products);
+      //reject("lo siento, no tenes autorizacion")
+    });
+
+    productList
+      .then((res) => {
+        setItems(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  console.log(items);
   return (
     <div>
-      <h1>{greetings}</h1>
-      <ul className={styles.containerFont}>
-        <li>Contacto</li>
-        <li>Mas cosas</li>
-        <li>ETC</li>
-      </ul>
+      <ItemList items={items} />
     </div>
   );
 };
