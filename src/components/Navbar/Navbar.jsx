@@ -14,17 +14,14 @@ const Navbar = ({ children }) => {
           />
         </Link>
         <ul className={styles.containerFont}>
-          <Link
-            to="/Contacto"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <li>Contacto</li>
+          <Link to="/slimes" style={{ textDecoration: "none", color: "black" }}>
+            <li>Slimes</li>
           </Link>
           <Link
-            to="/Mas cosas"
+            to="/Otras cosas"
             style={{ textDecoration: "none", color: "black" }}
           >
-            <li>Mas cosas</li>
+            <li>Otras cosas</li>
           </Link>
           <Link to="/ETC" style={{ textDecoration: "none", color: "black" }}>
             <li>ETC</li>

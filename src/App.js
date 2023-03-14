@@ -26,10 +26,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
-          {/*<Footer>
-            <ItemListContainer />
-            <ConsumiendoApis />
-  </Footer>*/}
         </Routes>
       </Navbar>
     </BrowserRouter>
