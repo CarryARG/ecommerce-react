@@ -1,14 +1,17 @@
 import styles from "./CarritoWidget.module.css";
+import { Link } from "react-router-dom";
 
-export const CartWidget = () => {
+const CartWidget = () => {
   return (
-    <div>
-      <img
-        src="https://res.cloudinary.com/dnytlq0wc/image/upload/v1677371782/carritoPixel_moae4i.png"
-        alt="Carrito pixel"
-        className={styles.containerCarrito}
-      />
-    </div>
+    <Link to="/cart">
+      <div>
+        <img
+          src="https://res.cloudinary.com/dnytlq0wc/image/upload/v1677371782/carritoPixel_moae4i.png"
+          alt="Carrito pixel"
+          className={styles.containerCarrito}
+        />
+      </div>
+    </Link>
   );
 };
 

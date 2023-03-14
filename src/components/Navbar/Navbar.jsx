@@ -1,20 +1,34 @@
 import CartWidget from "../CartWidget/CartWidget.jsx";
-import ItemListContainer from "../ItemListContainer/ItemListContainer.jsx";
 import styles from "./Navbar.module.css";
+import { Link } from "react-router-dom";
 
-export const Navbar = () => {
+const Navbar = ({ children }) => {
   return (
     <div>
       <div className={styles.containerBackground}>
-        <img
-          src="https://res.cloudinary.com/dnytlq0wc/image/upload/v1677371107/cofre_ewpmdc.png"
-          alt="Logo"
-          className={styles.containerLogo}
-        />
+        <Link to="/">
+          <img
+            src="https://res.cloudinary.com/dnytlq0wc/image/upload/v1677371107/cofre_ewpmdc.png"
+            alt="Logo"
+            className={styles.containerLogo}
+          />
+        </Link>
         <ul className={styles.containerFont}>
-          <li>Contacto</li>
-          <li>Mas cosas</li>
-          <li>ETC</li>
+          <Link
+            to="/Contacto"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <li>Contacto</li>
+          </Link>
+          <Link
+            to="/Mas cosas"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <li>Mas cosas</li>
+          </Link>
+          <Link to="/ETC" style={{ textDecoration: "none", color: "black" }}>
+            <li>ETC</li>
+          </Link>
         </ul>
         <CartWidget />
       </div>
@@ -25,7 +39,7 @@ export const Navbar = () => {
           alt="bannerPixel2022"
         />
       </div>
-      <ItemListContainer />
+      {children}
     </div>
   );
 };

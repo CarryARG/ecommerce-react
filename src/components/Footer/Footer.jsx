@@ -1,7 +1,12 @@
 import styles from "./Footer.module.css";
 
-export const Footer = () => {
-  return <div className={styles.containerBackground}>Footer</div>;
+const Footer = ({ children }) => {
+  return (
+    <div>
+      {children}
+      <div className={styles.containerBackground}>Footer</div>
+    </div>
+  );
 };
 
 export default Footer;
