@@ -22,9 +22,19 @@ function App() {
               </Footer>
             }
           />
+          <Route
+            path="/category/:CategoryName"
+            element={
+              <Footer>
+                <ItemListContainer />
+                <ConsumiendoApis />
+              </Footer>
+            }
+          />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
+
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </Navbar>

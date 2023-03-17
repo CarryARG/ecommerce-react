@@ -9,20 +9,28 @@ import { Link } from "react-router-dom";
 
 const Item = ({ element }) => {
   return (
-    <Card sx={{ width: 200 }} style={{ backgroundColor: "whitesmoke" }}>
-      <CardMedia sx={{ height: 200 }} image={element.img} />
+    <Card
+      sx={{ width: 300, height: 400 }}
+      style={{ backgroundColor: "whitesmoke" }}
+    >
+      <CardMedia sx={{ width: 160, height: 160 }} image={element.img} />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          sx={{ height: 55 }}
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
           <b>{element.title}</b>
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <b>${element.price}</b>
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography sx={{ height: 50 }} variant="body2" color="text.secondary">
           {element.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ height: 10 }}>
         <Link
           to={`/itemDetail/${element.id}`} //javascript
           style={{ textDecoration: "none", color: "black" }}
