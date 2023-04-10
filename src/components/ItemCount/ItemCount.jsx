@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const ItemCount = ({ stock, initial = 1, onAdd }) => {
   const [contador, setContador] = useState(initial);
+  useEffect(() => {
+    setContador(initial);
+  }, [initial]);
 
   const sumar = () => {
     if (contador < stock) {
@@ -16,11 +20,24 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
   };
 
   return (
-    <div>
-      <h3>{contador}</h3>
-      <button onClick={sumar}>Sumar</button>
-      <button onClick={restar}>Restar</button>
-      <button onClick={() => onAdd(contador)}>Agregar al Carrito</button>
+    <div className="container-btn">
+      <h3>Cantidad: {contador}</h3>
+      <div className="btns">
+        <Button variant="outlined" onClick={sumar}>
+          +
+        </Button>
+      </div>
+      <div className="btns">
+        <Button variant="outlined" onClick={() => onAdd(contador)}>
+          Agregar al Carrito
+        </Button>
+      </div>
+
+      <div className="btns">
+        <Button variant="outlined" onClick={restar}>
+          -
+        </Button>
+      </div>
     </div>
   );
 };

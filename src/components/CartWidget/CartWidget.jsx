@@ -5,7 +5,8 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const CartWidget = () => {
-  const { cart } = useContext(CartContext);
+  const { getTotalQuantity } = useContext(CartContext);
+  const total = getTotalQuantity();
 
   return (
     <Link to="/cart">
@@ -29,7 +30,7 @@ const CartWidget = () => {
               position: "relative",
             }}
           >
-            {cart.length}
+            {total}
           </span>
         </div>
         <img

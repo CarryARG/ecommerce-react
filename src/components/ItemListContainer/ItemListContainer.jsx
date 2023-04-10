@@ -2,6 +2,7 @@ import { products } from "../../productsMock";
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 const ItemListContainer = () => {
   const { CategoryName } = useParams();
@@ -14,7 +15,10 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     const productList = new Promise((resolve, reject) => {
-      resolve(CategoryName ? productosFiltrados : products);
+      setTimeout(() => {
+        resolve(CategoryName ? productosFiltrados : products);
+      }, 3000);
+
       //reject("lo siento, no tenes autorizacion")
     });
 
@@ -27,10 +31,13 @@ const ItemListContainer = () => {
       });
   }, [CategoryName]);
 
-  console.log(items);
   return (
     <div>
-      <ItemList items={items} />
+      {items.length > 0 ? (
+        <ItemList items={items} />
+      ) : (
+        <PacmanLoader color="red" size={150} />
+      )}
     </div>
   );
 };
