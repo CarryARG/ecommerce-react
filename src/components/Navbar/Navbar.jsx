@@ -1,8 +1,26 @@
 import CartWidget from "../CartWidget/CartWidget.jsx";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { db } from "../../firebaseConfig.js";
 
 const Navbar = ({ children }) => {
+  const [categoryList, setCategoryList] = useState([]);
+
+  useEffect(() => {
+    const itemsCollection = collection(db, "categories");
+    getDocs(itemsCollection).then((res) => {
+      let arrayCategories = res.docs.map((category) => {
+        return {
+          ...category.data(),
+          id: category.id,
+        };
+      });
+      setCategoryList(arrayCategories);
+    });
+  });
+
   return (
     <div>
       <div className={styles.containerBackground}>
@@ -14,24 +32,17 @@ const Navbar = ({ children }) => {
           />
         </Link>
         <ul className={styles.containerFont}>
-          <Link
-            to="/category/slimes"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            Slimes
-          </Link>
-          <Link
-            to="/category/otrasCosas"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            Otras cosas
-          </Link>
-          <Link
-            to="/etcetera"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            ETC
-          </Link>
+          {categoryList.map((category) => {
+            return (
+              <Link
+                key={category.id}
+                to={category.path}
+                className={styles.navbarItem}
+              >
+                {category.title}
+              </Link>
+            );
+          })}
         </ul>
         <CartWidget />
       </div>

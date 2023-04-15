@@ -1,16 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../../productsMock";
 import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
+import { getDoc, collection, doc } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const { agregarAlCarrito, getQuantityById } = useContext(CartContext);
-  const productsSelected = products.find(
-    (element) => element.id === Number(id)
-  );
+
+  const [productsSelected, setProductsSelected] = useState({});
+  useEffect(() => {
+    const itemsCollection = collection(db, "products");
+    const ref = doc(itemsCollection, id);
+    getDoc(ref).then((res) => {
+      setProductsSelected({
+        ...res.data(),
+        id: res.id,
+      });
+    });
+  }, []);
+
+  //const productsSelected = products.find( (element) => element.id === Number(id));
   const onAdd = (cantidad) => {
     let producto = {
       ...productsSelected,
